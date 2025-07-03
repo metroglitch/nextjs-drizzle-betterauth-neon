@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.js + Drizzle + Neon + Better Auth Starter Template
 
-## Getting Started
+A modern, production-ready starter template for building full-stack web applications with authentication, database management, and a beautiful UI out of the box.
 
-First, run the development server:
+## 🚀 Tech Stack
 
+- **[Next.js 15](https://nextjs.org/)** - React framework with App Router and Turbopack
+- **[TypeScript](https://www.typescriptlang.org/)** - Type-safe development
+- **[Drizzle ORM](https://orm.drizzle.team/)** - Type-safe SQL ORM
+- **[Neon](https://neon.tech/)** - Serverless PostgreSQL database
+- **[Better Auth](https://www.better-auth.com/)** - Modern authentication library
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
+- **[Shadcn/ui](https://ui.shadcn.com/)** - Beautiful, accessible UI components
+- **[Lucide React](https://lucide.dev/)** - Beautiful icons
+
+## ✨ Features
+
+### 🔐 Authentication
+- **Social Login**: Pre-configured Google and GitHub OAuth
+- **Session Management**: Secure session handling with Better Auth
+- **Database Integration**: User data stored in PostgreSQL via Drizzle ORM
+- **Type-Safe**: Full TypeScript support for auth flows
+
+### 🗄️ Database
+- **Serverless PostgreSQL**: Powered by Neon for scalable, serverless database
+- **Type-Safe ORM**: Drizzle ORM with full TypeScript integration
+- **Pre-built Schema**: User, session, account, and verification tables
+- **Easy Migrations**: Simple schema updates with `npx drizzle-kit push`
+
+### 🎨 UI/UX
+- **Modern Design**: Clean, responsive interface with Tailwind CSS
+- **Dark/Light Mode**: Theme switching with next-themes
+- **Component Library**: Shadcn/ui components for consistent design
+- **Beautiful Icons**: Lucide React icon library
+
+### 🛠️ Developer Experience
+- **TypeScript**: Full type safety across the entire stack
+- **Hot Reload**: Fast development with Turbopack
+- **ESLint + Prettier**: Code formatting and linting
+- **Package Manager**: Optimized for pnpm
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ 
+- pnpm (recommended package manager)
+- Neon database account
+- Google OAuth app (optional)
+- GitHub OAuth app (optional)
+
+### 1. Clone and Install
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd nextjsdrizzlebetterauthneon
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Environment Setup
+Create a `.env.local` file:
+```env
+# Database
+DATABASE_URL="your-neon-database-url"
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Authentication (Optional - for social login)
+GOOGLE_CLIENT_ID="your-google-client-id"
+GOOGLE_CLIENT_SECRET="your-google-client-secret"
+GITHUB_CLIENT_ID="your-github-client-id"
+GITHUB_CLIENT_SECRET="your-github-client-secret"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 3. Database Setup
+```bash
+# Push the schema to your database
+npx drizzle-kit push
+```
 
-## Learn More
+### 4. Run Development Server
+```bash
+pnpm dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) to see your application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Project Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+├── app/                    # Next.js App Router
+│   ├── api/auth/          # Authentication API routes
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/            # Reusable UI components
+├── db/                    # Database configuration
+│   ├── index.ts          # Database connection
+│   └── schema.ts         # Drizzle schema definitions
+├── lib/                   # Utility libraries
+│   ├── auth.ts           # Better Auth configuration
+│   └── utils.ts          # Helper functions
+└── drizzle.config.ts     # Drizzle configuration
+```
 
-## Deploy on Vercel
+## 🔧 Customization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Adding Shadcn/ui Components
+```bash
+pnpm dlx shadcn@latest add button
+pnpm dlx shadcn@latest add input
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Database Schema Changes
+1. Update `db/schema.ts`
+2. Run `npx drizzle-kit push` to apply changes
+
+### Adding Authentication Providers
+Edit `lib/auth.ts` to add more social providers or configure email/password auth.
+
+## 📚 Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Drizzle ORM Documentation](https://orm.drizzle.team/)
+- [Better Auth Documentation](https://www.better-auth.com/)
+- [Neon Documentation](https://neon.tech/docs)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+## 🚀 Deploy
+
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Connect your repository to [Vercel](https://vercel.com)
+3. Add your environment variables
+4. Deploy!
+
+### Other Platforms
+This template works with any platform that supports Node.js applications (Railway, Render, DigitalOcean, etc.).
+
+## 📄 License
+
+This template is open source and available under the [MIT License](LICENSE).
+
+---
+
+**Ready to build something amazing?** This starter gives you everything you need to create a modern web application with authentication, database, and beautiful UI components. Happy coding! 🎉
